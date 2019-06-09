@@ -1,0 +1,84 @@
+<div id="body-container">
+    <div id="body-content">
+
+        <section class="nav-page" pageVTourUrl="guide/tour/form-tour.html" pageVGuideUrl="guide/form-guide.html">
+            <div class="container">
+                <div class="row">
+                    <div class="span7">
+                        <header class="page-header">
+                            <h3>Tài khoản<br /><small>Chỉnh sửa thông tin cá nhân</small></h3>
+                        </header>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="my-account-security-form" class="page container">
+            <form class="form-horizontal" [formGroup]="userForm" (ngSubmit)="onChangeUserInfo()">
+                <div class="container">
+                    <div class="alert alert-block alert-danger" *ngIf="flag == false && message">{{message}}</div>
+                    <div class="alert alert-block alert-success" *ngIf="flag && message">{{message}}</div>
+                    <div class="row">
+                        <div id="acct-verify-row" class="span9">
+                            <fieldset>
+                                <legend>Thông tin</legend>
+                                <div class="control-group">
+                                    <label for="manager" class="control-label">Cấp độ</label>
+                                    <div class="controls">
+                                        <select class="span5"readonly="true">
+                                            <option value="true">Admin</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="control-group ">
+                                    <label class="control-label">Email</label>
+                                    <div class="controls">
+                                        <input class="span5" type="text" readonly="true" value="{{user.email}}">
+                                    </div>
+                                </div>
+                                <div class="control-group ">
+                                    <label class="control-label">Họ và tên</label>
+                                    <div class="controls">
+                                        <input class="span5" type="text" formControlName="name" value="{{user.name}}">
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div id="acct-password-row" class="span7">
+                            <fieldset>
+                                <legend>Mật khẩu</legend><br>
+                                <div class="control-group ">
+                                    <label class="control-label">Mật khẩu hiện tại<span class="required">
+                                            *</span></label>
+                                    <div class="controls">
+                                        <input class="span4" type="password" formControlName="password"
+                                            autocomplete="false">
+                                    </div>
+                                </div>
+                                <div class="control-group ">
+                                    <label class="control-label">Mật khẩu mới<span class="required"> *</span></label>
+                                    <div class="controls">
+                                        <input class="span4" type="password"  formControlName="newPassword"
+                                            autocomplete="false">
+                                    </div>
+                                </div>
+                                <div class="control-group ">
+                                    <label class="control-label">Xác nhận mật khẩu mới<span class="required">
+                                            *</span></label>
+                                    <div class="controls">
+                                        <input class="span4" type="password"
+                                            formControlName="newPasswordRepeat" autocomplete="false">
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <footer id="submit-actions" class="form-actions">
+                        <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Cập nhật</button> -
+                        <button type="button" class="btn" name="action" (click)="closeURL()">Đóng</button>
+                    </footer>
+                </div>
+            </form>
+        </section>
+
+    </div>
+</div>
